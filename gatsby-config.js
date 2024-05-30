@@ -4,7 +4,12 @@
 module.exports = {
   siteMetadata: {
     title: `EN8 Audio`,
-    siteUrl: `https://www.yourdomain.tld`
+    siteUrl: `https://www.en8audio.com`
   },
-  plugins: ["gatsby-plugin-sass"]
+  plugins: [
+    "gatsby-plugin-sass",
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`
+  ]
 };
