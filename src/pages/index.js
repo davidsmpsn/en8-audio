@@ -2,16 +2,44 @@ import * as React from 'react'
 import '../style/main.scss'
 
 const IndexPage = () => {
-  const clientList = [
-    'island-records',
-    'independent',
-    'national-geographic',
-    'independent-venue-week',
-    'ypsigrock',
-    'mumford-and-sons',
-    'keane',
-    'honeyblood',
-    'the-national'
+  const music = [
+    'abbey-road-studios',
+    'arlo-parks',
+    'bombay-bicycle-club',
+    'cleo-sol',
+    'david-byrne',
+    'dolby-atmos',
+    'dua-lipa',
+    'ed-sheeran',
+    'goldfrapp',
+    'liam-gallagher',
+    'lianne-la-havas',
+    'little-simz',
+    'matt-maltese',
+    'metropolis',
+    'moby',
+    'rak-studios',
+    'rex-orange-county',
+    'sam-smith',
+    'sony-music'
+  ]
+
+  const companies = [
+    'amazon-music',
+    'apple-tv',
+    'awal',
+    'bbc',
+    'burberry',
+    'cartier',
+    'fender',
+    'gsk',
+    'koko',
+    'levis',
+    'netflix',
+    'nickelodeon',
+    'polydor',
+    'sky-arts',
+    'umg'
   ]
 
   return (
@@ -45,11 +73,20 @@ const IndexPage = () => {
       </div>
 
       <div className='clients'>
-        {clientList.map(client => (
-          <div className='clients__client'>
-            <img src={`./client-logos/${client}.png`} alt='client' />
-          </div>
-        ))}
+        <div className='clients__list'>
+        {music.map(client => (
+            <div className='clients__client'>
+              <img src={`./client-logos/music/${client}.svg`} alt='client' />
+            </div>
+          ))}
+        </div>
+        <div className='clients__list'>
+          {companies.map(client => (
+            <div className='clients__client'>
+              <img src={`./client-logos/companies/${client}.svg`} alt='client' />
+            </div>
+          ))}
+        </div>
       </div>
       
     </div>

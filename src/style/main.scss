@@ -101,15 +101,20 @@ body {
 }
 
 .clients {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-column-gap: 20px;
-
-  .clients__client {
-    display: flex;
-    align-items: center;
-    grid-column: span 2;
-
-    img { margin: 0 auto }
+  .clients__list {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-column-gap: 4rem;
+    padding: 0 0 4rem;
+    
+    .clients__client {
+      display: flex;
+      align-items: center;
+      grid-column: span 2;
+      height: 100px;
+  
+      img { margin: 0 auto }
+    }
   }
+
 }
