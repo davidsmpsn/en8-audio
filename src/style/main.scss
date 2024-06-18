@@ -26,6 +26,16 @@ body {
   }
 }
 
+.button-solid {
+  background: #fff;
+  border: none;
+  text-transform: none;
+  color: $color-text-grey;
+  border-radius: 5px;
+  letter-spacing: 0;
+  font-size: 1.05rem;
+}
+
 .wrapper {
   width: 90%;
   max-width: 1400px;
@@ -139,7 +149,9 @@ body {
 }
 
 .projects {
-  margin: 6rem 0;
+  padding: 6rem 0;
+  box-sizing: content-box;
+  border-bottom: 1px solid $color-border;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 10px;
@@ -160,6 +172,7 @@ body {
     }
 
     a {
+      color: $color-text-dark;
       position: absolute;
       top: 0;
       left: 0;
@@ -170,7 +183,7 @@ body {
       justify-content: space-between;
       padding: 10px 15px;
       text-decoration: none;
-      background: rgba(0, 0, 0, .4);
+      background: rgba(0, 0, 0, 0);
       transition: background-color ease .2s;
 
       img {
@@ -189,32 +202,41 @@ body {
         opacity: 0;
         transition: all ease .2s;
       }
+
+      .projects__project-text {
+        margin: 0 0 0 -5px;
+        transition: all ease .2s;
+        visibility: hidden;
+        opacity: 0;
+      }
   
       h3 {
-        margin: 0 0 0 -5px;
         padding: 0;
-        font-weight: 400;
+        font-weight: 600;
         font-size: 1rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        transition: all ease .2s;
-        visibility: hidden;
-        opacity: 0;
 
         span { font-weight: 500 }
       }
 
+      p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
       &:hover {
-        background: rgba(0, 0, 0, .2);
+        background: rgba(0, 0, 0, .4);
 
         svg,
-        h3 {
+        .projects__project-text {
           visibility: visible;
           opacity: 1;
         }
 
-        h3 { margin-left: 2px }
+        .projects__project-text { margin-left: 2px }
       }
     }
   }
@@ -239,13 +261,35 @@ body {
         margin: 0 auto;
       }
     }
+
+    &:first-child { margin-bottom: 6rem }
+  }
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+  padding: 6rem 2rem;
+  background: lighten($color-background, 3%);
+  text-align: center;
+  border-radius: 10px;
+
+  h2 {
+    margin: 0 0 2rem;
+    font-size: 3rem;
+    font-weight: 600;
+    color: $color-text-dark;
+  }
+
+  p {
+    margin-bottom: .5rem;
   }
 }
 
 .footer {
   margin-bottom: 1.5rem;
-  padding: 1rem 0;
-  border-top: 1px solid $color-border;
+  padding: 4rem 0;
   color: $color-text-light;
   text-align: center;
 }

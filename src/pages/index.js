@@ -1,9 +1,11 @@
 import * as React from 'react'
+import Seo from '../components/seo'
 import { Header } from '../components/header'
 import { Hero } from '../components/hero'
 import { About } from '../components/about'
 import { Projects } from '../components/projects'
 import { Clients } from '../components/clients'
+import { Contact } from '../components/contact'
 
 import '../style/main.scss'
 
@@ -24,6 +26,7 @@ const IndexPage = () => {
         <About />        
         <Projects projects={projects} />
         <Clients music={music} companies={companies} />
+        <Contact />
 
         <footer className="footer">
           &copy; EN8 Audio 2024
@@ -35,4 +38,4 @@ const IndexPage = () => {
 
 export default IndexPage
 
-export const Head = () => <title>EN8 Audio</title>
+export const Head = () => <Seo title="Home" />
