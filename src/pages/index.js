@@ -19,7 +19,7 @@ const IndexPage = () => {
   return (
     <div>
       <div className="page_top">
-        <video autoPlay muted loop id="myVideo">
+        <video autoPlay={true} muted={true} loop={true} playsinline={true} id="myVideo">
           <source src="./showreel.mp4" type="video/mp4"/>
         </video>
         <div className="wrapper">
