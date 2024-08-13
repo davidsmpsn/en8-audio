@@ -22,31 +22,17 @@ export const Hero = () => {
       opacity: 1,
       transition: { duration: 1 }
     },
-    hidden: { y: 20, opacity: 0 }
+    hidden: { opacity: 0 }
   }
 
   return (
-    <div className="hero">
       <motion.div
-        className="hero__inner"
+        className="hero"
         initial="hidden"
         animate="visible"
         variants={group}
       >
-        <motion.h2
-          variants={item}
-        >
-          <span>Audio recording, mixing and production </span>
-          <span>in the commercial & creative domain.</span>
-        </motion.h2>
-        <motion.a
-          href="contact"
-          className="button"
-          variants={item}
-        >
-          Get In Touch
-          </motion.a>
+        <img src="./logo.svg" />
       </motion.div>
-    </div>
   )
 }

@@ -2,26 +2,27 @@
 @import 'variables';
 
 body {
-  color: $color-text;
+  color: $primary;
   font-family: $font-primary;
   font-size: 100%;
-  background: $color-background;
+  background: $bg-dark;
 }
 
 .button {
   display: inline-block;
   padding: .8rem 2.25rem;
-  font-size: .875rem;
+  color: $dark;
+  font-size: 1.125rem;
   font-weight: 600;
   text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border: 3px solid $color-border;
+  background: $highlight;
+  border-radius: 10px;
   box-sizing: border-box;
   transition: all ease .2s;
 
   &:hover {
-    color: $color-background;
+    cursor: pointer;
+    color: $bg-dark;
     background: #fff;
   }
 }
@@ -30,21 +31,35 @@ body {
   background: #fff;
   border: none;
   text-transform: none;
-  color: $color-text-grey;
+  color: $primary;
   border-radius: 5px;
   letter-spacing: 0;
   font-size: 1.05rem;
 }
 
 .wrapper {
-  width: 90%;
-  max-width: 1400px;
+  width: 94%;
+  max-width: 1760px;
   margin: 0 auto;
 }
 
 .page_top {
-  background-image: url('../images/waves.svg');
-  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 100vh;
+
+  #myVideo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    left: 0;
+    top: 0;
+    z-index: -2;
+  }
+
+  .wrapper {
+    height: 100vh;
+  }
 }
 
 .header {
@@ -53,11 +68,13 @@ body {
   justify-content: space-between;
   padding: 2rem 0;
 
+  @include md { justify-content: center }
+
   h1 {
     display: block;
     margin: 0;
     padding: 0;
-    color: $color-text-dark;
+    color: $secondary;
     font-size: 1.5rem;
     font-weight: 500;
     text-align: center;
@@ -76,6 +93,8 @@ body {
   }
 
   .header__nav {
+    @include md { display: none }
+
     ul {
       display: flex;
       list-style: none;
@@ -86,14 +105,15 @@ body {
         margin-right: 1rem;
         a {
           padding: .8rem 1rem;
-          color: $color-text-light;
+          color: $secondary;
+          font-weight: 500;
           text-decoration: none;
           border-radius: 3px;
           transition: all ease .2s;
 
           &:hover {
-            color: $color-text-dark;
-            background: lighten($color-grey, 5%);
+            color: $primary;
+            background: rgba(255, 255, 255, .2) !important;
           }
         }
 
@@ -101,11 +121,7 @@ body {
           margin: 0;
 
           a {
-            background: $color-grey;
-
-            &:hover {
-              background: lighten($color-grey, 5%);
-            }
+            background: rgba(255, 255, 255, .15);
           }
         }
       }
@@ -116,180 +132,387 @@ body {
 }
 
 .hero {
-  .hero__inner {
-    padding: 10rem 0;
-    h2 {
-      margin-bottom: 5.625rem;
-      color: $color-text-dark;
-      font-size: 3.125rem;
-      font-weight: 400;
-
-      span {
-        display: block;
-
-        &:last-child {
-          color: $color-text-light;
-        }
-      }
-    }
-  }
-}
-
-.about {
-  padding: 6em 0;
-  border-bottom: 1px solid $color-border;
-
-  p {
-    max-width: 1100px;
-    color: $color-text-light;
-    font-size: 1.875rem;
-
-    span { color: $color-text-dark }
-  }
-}
-
-.projects {
-  padding: 6rem 0;
-  box-sizing: content-box;
-  border-bottom: 1px solid $color-border;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-column-gap: 10px;
-  grid-row-gap: 10px;
-  height: 60vw;
-  max-height: 900px;
-  
-  .projects__project {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
     display: flex;
-    flex-direction: column;
-    justify-content: end;
-    position: relative;
-    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    z-index: -1;
+}
 
-    &:nth-child(10n+3), &:nth-child(10n+6) {
-      grid-column-end: span 2;
-      grid-row-end: span 2;
-    }
+.mission {
+  padding: 8rem 0;
 
-    a {
-      color: $color-text-dark;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+  @include lg { padding: 6rem 0 }
+  @include md { padding: 5rem 0 }
+
+  .mission__inner {
+    grid-column-gap: 4rem;
+    grid-row-gap: 5rem;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    place-items: end center;
+    display: grid;
+
+    @include xl {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      padding: 10px 15px;
-      text-decoration: none;
-      background: rgba(0, 0, 0, 0);
-      transition: background-color ease .2s;
+      place-items: start;
+      gap: 2rem;
+    }
 
-      img {
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        object-fit: cover;
-        width: 100%;
-        height: 100%;
-      }
+    h1 {
+      font-size: 6.8rem;
+      font-weight: 600;
+      line-height: 120%;
 
-      svg {
-        align-self: flex-end;
-        visibility: hidden;
-        opacity: 0;
-        transition: all ease .2s;
-      }
+      @include lg { font-size: 5rem }
+      @include md { font-size: 4rem }
+    }
 
-      .projects__project-text {
-        margin: 0 0 0 -5px;
-        transition: all ease .2s;
-        visibility: hidden;
-        opacity: 0;
-      }
-  
-      h3 {
-        padding: 0;
-        font-weight: 600;
-        font-size: 1rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-
-        span { font-weight: 500 }
-      }
-
-      p {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-
-      &:hover {
-        background: rgba(0, 0, 0, .4);
-
-        svg,
-        .projects__project-text {
-          visibility: visible;
-          opacity: 1;
-        }
-
-        .projects__project-text { margin-left: 2px }
-      }
+    p {
+      max-width: 450px;
+      margin-bottom: 2rem;
+      font-size: 1.25rem;
     }
   }
 }
 
 .clients {
-  padding: 6rem 0;
+  overflow: hidden;
 
   .clients__list {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-column-gap: 4rem;
+    display: flex;
+    width: max-content;
+    gap: 40px;
     
     .clients__client {
       display: flex;
       align-items: center;
-      grid-column: span 2;
-      height: 100px;
+      max-width: 150px;
+      height: 150px;
+
+      @include md {
+        max-width: 80px;
+        height: 100px;
+      }
   
       img {
         display: block;
         margin: 0 auto;
       }
     }
+  }
+}
 
-    &:first-child { margin-bottom: 6rem }
+.about {
+  margin-top: -75px;
+
+  @include md { margin-top: -50px }
+
+  .about__inner {
+    grid-column-gap: 4rem;
+    grid-row-gap: 4rem;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-columns: 1fr;
+    place-items: center;
+    display: grid;
+    padding: 10%;
+    background: $bg-light;
+    border-radius: 10px;
+
+    @include lg {
+      display: flex;
+      flex-direction: column-reverse;
+      padding: 20% 10%;
+    }
+
+    .about__imgs {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      position: relative;
+      
+
+      .about__img:nth-child(1) {
+        grid-column: 1 / span 8;
+        grid-row: 1;
+        padding-top: 40%;
+      }
+
+      .about__img:nth-child(2) {
+        grid-column: 6 / -1;
+        grid-row: 1;
+        z-index: 1;
+      }
+
+      .about__img:nth-child(3) {
+        grid-column: 3 / -1;
+        grid-row: 1;
+        padding-top: 110%;
+      }
+    }
+
+    h2 {
+      font-size: 4.125rem;
+      font-weight: 600;
+      line-height: 120%;
+      margin-bottom: 2rem;
+
+      @include md { font-size: 3rem }
+      @include md { font-size: 2.5rem }
+    }
+
+    p {
+      font-size: 1.25rem;
+    }
+  }
+}
+
+
+.projects {
+  overflow: hidden;
+  
+  .wrapper {
+    padding: 8rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    border-bottom: 1px solid $border;
+  }
+  
+  .projects__top {
+    display: flex;
+    justify-content: space-between;
+
+    @include md {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    
+    h2 {
+      font-size: 2.875rem;
+      font-weight: 600;
+      margin-bottom: 1.75rem;
+    }
+    
+    p {
+      font-size: 1.25rem;
+      max-width: 524px;
+    }
+    
+    .projects__nav {
+      align-self: flex-end;
+      display: flex;
+
+      @include md { align-self: flex-start }
+      
+      button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        
+        svg {
+          fill: rgba(255, 255, 255, .6);
+          transition: fill ease .2s;
+        }
+        
+        &:hover svg {
+          fill: rgba(255, 255, 255, 1);
+        }
+      }
+    }
+  }
+  
+  
+  .projects__inner {
+    display: flex;
+    gap: 32px;
+    
+    
+  }
+  
+  .projects__project {
+    position: relative;
+    width: 100%;
+    max-width: 657px;
+    flex-shrink: 0;
+    max-height: 350px;
+    height: 53vw;
+    overflow: hidden;
+  }
+  
+  a {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px 15px;
+    text-decoration: none;
+    background: rgba(0, 0, 0, 0);
+    transition: background-color ease .2s;
+    
+    img {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+    
+    svg {
+      align-self: flex-end;
+      visibility: hidden;
+      opacity: 0;
+      transition: all ease .2s;
+    }
+    
+    .projects__project-text {
+      margin: 0 0 0 -5px;
+      transition: all ease .2s;
+      visibility: hidden;
+      opacity: 0;
+    }
+    
+    h3 {
+      padding: 0;
+      font-weight: 600;
+      font-size: 1rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      
+      span { font-weight: 500 }
+    }
+    
+    p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    &:hover {
+      background: rgba(0, 0, 0, .4);
+      
+      svg,
+      .projects__project-text {
+        visibility: visible;
+        opacity: 1;
+      }
+      
+      .projects__project-text { margin-left: 2px }
+    }
+  }
+}
+
+.services {
+  margin-bottom: 8rem;
+
+  .services__top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 8rem 0;
+    text-align: center;
+
+    @include md { padding: 5rem 0 }
+
+    h2 {
+      font-size: 4.75rem;
+      font-weight: 600;
+      line-height: 120%;
+      margin-bottom: 2rem;
+
+      @include lg { font-size: 4rem }
+      @include md { font-size: 3rem }
+      @include sm { font-size: 2.5rem }
+    }
+
+    p {
+      font-size: 1.25rem;
+      max-width: 520px;
+    }
+  }
+  .services__list {
+    .services__item {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr;
+      grid-column-gap: 2rem;
+      padding: 4rem 0;
+      border-bottom: 1px solid $primary;
+
+      @include md {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      h4 {
+        font-size: 1.625rem;
+        font-weight: 500;
+      }
+
+      p {
+        font-size: 1.25rem;
+      }
+    }
   }
 }
 
 .contact {
-  display: flex;
-  flex-direction: column;
   margin: 2rem 0;
-  padding: 6rem 2rem;
-  background: lighten($color-background, 3%);
-  text-align: center;
-  border-radius: 10px;
+  
+  .contact__inner {
+    display: flex;
+    gap: 3rem;
+    flex-direction: column;
+    padding: 8%;
+    background: lighten($bg-dark, 3%);
+    border-radius: 10px;
+    
+    h2 {
+      max-width: 1150px;
+      font-size: 4.125rem;
+      font-weight: 600;
 
-  h2 {
-    margin: 0 0 2rem;
-    font-size: 3rem;
-    font-weight: 600;
-    color: $color-text-dark;
+      @include lg { font-size: 3rem }
+    }
+    
+    p {
+      font-size: 1.25rem;
+      max-width: 500px;
+    }
   }
-
-  p {
-    margin-bottom: .5rem;
-  }
+  
 }
 
 .footer {
+  background: rgba(255, 255, 255, 1);
   margin-bottom: 1.5rem;
-  padding: 4rem 0;
-  color: $color-text-light;
-  text-align: center;
+  padding: 6rem 0;
+  color: $dark;
+
+  @include lg { padding: 4rem 0 }
+
+  a {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
 }

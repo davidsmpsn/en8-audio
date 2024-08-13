@@ -2,7 +2,24 @@ import React from 'react'
 
 export const About = () => (
   <div className="about">
-    <p><span>London based</span>, we are a team with over <span>30 years experience</span> in the field.</p>
-    <p>Working across <span>location sound</span>, <span>audio post-production</span> and <span>commercially recorded music</span>; trusted by some of the <span>biggest recording artists</span> and most <span>established production companies alike.</span></p>
+    <div className="wrapper">
+      <div className="about__inner">
+        <div className="about__imgs">
+          <div className="about__img">
+            <img src="./about/img3.png"/>
+          </div>
+          <div className="about__img">
+            <img src="./about/img2.png"/>
+          </div>
+          <div className="about__img">
+            <img src="./about/img1.png"/>
+          </div>
+        </div>
+        <div className="about__text">
+          <h2>Meet your audio department</h2>
+          <p>London based, we are a team with over 30 years experience in the field. We bring together a diverse group of seasoned audio professionals, each with a deep passion for sound and a commitment to excellence.</p>
+        </div>
+      </div>
+    </div>
   </div>
 )

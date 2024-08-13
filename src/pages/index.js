@@ -2,36 +2,40 @@ import * as React from 'react'
 import Seo from '../components/seo'
 import { Header } from '../components/header'
 import { Hero } from '../components/hero'
+import { Mission } from '../components/mission'
 import { About } from '../components/about'
 import { Projects } from '../components/projects'
+import { Services } from '../components/services'
 import { Clients } from '../components/clients'
 import { Contact } from '../components/contact'
+import { Footer } from '../components/footer'
 
 import '../style/main.scss'
 
 import { projects } from '../data/projects'
-import { companies, music } from '../data/clients'
+import { clients } from '../data/clients'
 
 const IndexPage = () => {
   return (
     <div>
       <div className="page_top">
+        <video autoPlay muted loop id="myVideo">
+          <source src="./showreel.mp4" type="video/mp4"/>
+        </video>
         <div className="wrapper">
           <Header />
           <Hero />
         </div>
       </div>
 
-      <div className="wrapper">
-        <About />        
-        <Projects projects={projects} />
-        <Clients music={music} companies={companies} />
-        <Contact />
-
-        <footer className="footer">
-          &copy; EN8 Audio 2024
-        </footer>
-      </div>
+      <Mission />
+      <Clients clients={clients} />
+      <About />        
+      <Projects projects={projects} />
+      <Services />
+      <Contact />
+      <Footer />
+      
     </div>
   )
 }
