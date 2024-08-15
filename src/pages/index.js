@@ -30,10 +30,12 @@ const IndexPage = () => {
 
       <Mission />
       <Clients clients={clients} />
-      <About />        
+
       <Projects projects={projects} />
       <Services />
-      <Contact />
+      <About />        
+      
+      {/* <Contact /> */}
       <Footer />
       
     </div>

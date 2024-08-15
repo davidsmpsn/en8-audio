@@ -5,10 +5,10 @@ export const Mission = () => (
     <div className="wrapper">
       <div className="mission__inner">
         <div className="mission__item">
-          <h1>Our Sound.<br/>Your Vision.</h1>
+          <h1>Wherever you are, <br/> We've got your sound.</h1>
         </div>
         <div className="mission__item">
-          <p>Our commitment is to deliver exceptional audio that perfectly aligns with your creative goals.</p>
+          <p>Trusted by some of the biggest recording artists and most established production companies alike.</p>
           <a className="button">Get in touch</a>
         </div>
       </div>
