@@ -1,43 +1,3 @@
-export const music = [
-  'abbey-road-studios',
-  'arlo-parks',
-  'bombay-bicycle-club',
-  'cleo-sol',
-  'david-byrne',
-  'dolby-atmos',
-  'dua-lipa',
-  'ed-sheeran',
-  'goldfrapp',
-  'liam-gallagher',
-  'lianne-la-havas',
-  'little-simz',
-  'matt-maltese',
-  'metropolis',
-  'moby',
-  'rak-studios',
-  'rex-orange-county',
-  'sam-smith',
-  'sony-music'
-]
-
-export const companies = [
-  'amazon-music',
-  'apple-tv',
-  'awal',
-  'bbc',
-  'burberry',
-  'cartier',
-  'fender',
-  'gsk',
-  'koko',
-  'levis',
-  'netflix',
-  'nickelodeon',
-  'polydor',
-  'sky-arts',
-  'umg'
-]
-
 export const clients = [
   'abbey-road-studios',
   'arlo-parks',
@@ -56,7 +16,6 @@ export const clients = [
   'moby',
   'rak-studios',
   'rex-orange-county',
-  'sam-smith',
   'sony-music',
   'amazon-music',
   'apple-tv',
