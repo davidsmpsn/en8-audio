@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Mission = () => (
+export const Mission = ({ handleOpen }) => (
   <div className="mission">
     <div className="wrapper">
       <div className="mission__inner">
@@ -10,7 +10,7 @@ export const Mission = () => (
         </div>
         <div className="mission__item">
           <p>Let us help you achieve your vision.</p>
-          <a className="button">Get in touch</a>
+          <button className="button" onClick={handleOpen}>Get in touch</button>
         </div>
       </div>
     </div>

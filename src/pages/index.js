@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { useState } from 'react'
 import Seo from '../components/seo'
 import { Header } from '../components/header'
 import { Hero } from '../components/hero'
@@ -16,6 +17,16 @@ import { projects } from '../data/projects'
 import { clients } from '../data/clients'
 
 const IndexPage = () => {
+  const [isOpen, setOpen] = useState(false)
+
+  const handleClose = () => {
+    setOpen(false)
+  }
+
+  const handleOpen = () => {
+    setOpen(true)
+  }
+
   return (
     <div>
       <div className="page_top">
@@ -23,19 +34,19 @@ const IndexPage = () => {
           <source src="./showreel.mp4" type="video/mp4"/>
         </video>
         <div className="wrapper">
-          <Header />
+          <Header handleOpen={handleOpen} />
           <Hero />
         </div>
       </div>
 
-      <Mission />
+      <Mission handleOpen={handleOpen} />
       <Clients clients={clients} />
 
       <Projects projects={projects} />
       <Services />
       <About />        
       
-      {/* <Contact /> */}
+      <Contact isOpen={isOpen} handleClose={handleClose}/>
       <Footer />
       
     </div>
