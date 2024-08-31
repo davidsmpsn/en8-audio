@@ -24,8 +24,7 @@ export const Projects = ({ projects }) => {
       <div className="wrapper">
         <div className="projects__top">
           <div className="projects__text">
-            {/* <h2>Trusted by the best</h2> */}
-            <p>From in-studio to on-location, we offer a range of audio services designed to bring your creative projects to life.</p>
+            <p>We offer a range of audio services designed to bring your creative projects to life.</p>
           </div>
 
           

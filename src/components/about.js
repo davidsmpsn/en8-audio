@@ -17,7 +17,7 @@ export const About = () => (
         </div>
         <div className="about__text">
           <h2>Meet your audio department</h2>
-          <p>London based, we are a team with over 30 years experience in the field. We bring together a diverse group of seasoned audio professionals, each with a deep passion for sound and a commitment to excellence.</p>
+          <p>London & UK based, we are a team with over 30 years experience in the field. We bring together a diverse group of seasoned audio professionals, each with a deep passion for sound and a real commitment to excellence. We pride ourselves in being personable & professional, efficient & reliable, and delivering our services at a very high level.</p>
         </div>
       </div>
     </div>

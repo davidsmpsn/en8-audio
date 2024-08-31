@@ -31,7 +31,7 @@ const IndexPage = () => {
     <div>
       <div className="page_top">
         <video autoPlay={true} muted={true} loop={true} playsinline={true} id="myVideo">
-          <source src="./showreel.mp4" type="video/mp4"/>
+          <source src="./showreel.webm" type="video/webm"/>
         </video>
         <div className="wrapper">
           <Header handleOpen={handleOpen} />

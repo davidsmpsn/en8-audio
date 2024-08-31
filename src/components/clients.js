@@ -25,7 +25,11 @@ export const Clients = ({ clients }) => {
 
   return (
     <div className="clients">
-      <motion.div className="clients__list" ref={ref} style={{ x: xTranslation }}>
+      <motion.div
+        className="clients__list"
+        ref={ref}
+        style={{ x: xTranslation }}
+      >
       {[...clients, ...clients].map(client => (
           <div className="clients__client">
             <img src={`./client-logos/${client}.svg`} alt="client" />

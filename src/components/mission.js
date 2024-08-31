@@ -6,10 +6,9 @@ export const Mission = ({ handleOpen }) => (
       <div className="mission__inner">
         <div className="mission__item">
           <h1>Wherever you are, <br/> we've got your sound.</h1>
-          <p>Trusted by some of the biggest recording artists and most established production companies alike.</p>
+          <p>In-studio to on-location, mixing to post production &mdash; whatever you need, we make it happen.</p>
         </div>
         <div className="mission__item">
-          <p>Let us help you achieve your vision.</p>
           <button className="button" onClick={handleOpen}>Get in touch</button>
         </div>
       </div>
