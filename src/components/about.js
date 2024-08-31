@@ -1,23 +1,24 @@
 import React from 'react'
+import { PortableText } from '@portabletext/react'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
-export const About = () => (
+export const About = ({ header, text, images }) => (
   <div className="about">
     <div className="wrapper">
       <div className="about__inner">
         <div className="about__imgs">
-          <div className="about__img">
-            <img src="./about/img3.png"/>
-          </div>
-          <div className="about__img">
-            <img src="./about/img2.png"/>
-          </div>
-          <div className="about__img">
-            <img src="./about/img1.png"/>
-          </div>
+          {images.map(image => (
+            <div className="about__img">
+              <GatsbyImage
+                image={image.asset.gatsbyImageData}
+                draggable="false"
+              />
+            </div>
+          ))}
         </div>
         <div className="about__text">
-          <h2>Meet your audio department</h2>
-          <p>London & UK based, we are a team with over 30 years experience in the field. We bring together a diverse group of seasoned audio professionals, each with a deep passion for sound and a real commitment to excellence. We pride ourselves in being personable & professional, efficient & reliable, and delivering our services at a very high level.</p>
+          <h2>{header}</h2>
+          <PortableText value={text} />
         </div>
       </div>
     </div>

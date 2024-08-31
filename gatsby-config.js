@@ -24,6 +24,14 @@ module.exports = {
         display: `browser`,
         icon: `src/images/favicon.png`
       },
-    }
+    },
+    {
+      resolve: `gatsby-source-sanity`,
+      options: {
+        projectId: `cxqmzg7n`,
+        dataset: `production`,
+        graphqlTag: 'default'
+      },
+    },
   ]
 };
