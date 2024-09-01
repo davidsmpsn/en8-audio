@@ -27,6 +27,7 @@ export const Contact = ({ isOpen, handleClose }) => {
               <button onClick={copy}>Copy</button>
             </div>
           </div>
+          <div className="overlay__trigger" onClick={handleClose}></div>
         </motion.div>
       )}
     </AnimatePresence>

@@ -56,7 +56,7 @@ export const query = graphql`
         node {
           id
           title
-          services
+          _rawServices
           _rawDescription
         }
       }

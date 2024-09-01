@@ -16,6 +16,7 @@ export const About = ({ header, text, images }) => (
               />
             </div>
           ))}
+          <div className="about__diagonal"></div>
         </div>
         <div className="about__text">
           <h2>{header}</h2>
