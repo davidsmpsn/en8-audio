@@ -50,7 +50,7 @@ export const Projects = ({ projects, text }) => {
           onDragEnd={onDragEnd}
         >
           {projects.map(project => (
-            <div className="projects__project" ref={ref}>
+            <div className="projects__project" ref={ref} key={project.id}>
               <a href={project.link} target="_blank" rel="noreferrer" draggable="false">
                 <GatsbyImage
                   image={project.image.asset.gatsbyImageData}

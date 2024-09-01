@@ -32,7 +32,7 @@ export const Clients = ({ clients }) => {
       >
       {[...clients, ...clients].map(client => (
           <div className="clients__client">
-            <img src={`./client-logos/${client}.svg`} alt="client" />
+            <img src={`./client-logos/${client}.svg`} alt={client} />
           </div>
         ))}
       </motion.div>

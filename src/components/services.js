@@ -6,7 +6,7 @@ export const Services = ({ services }) => (
     <div className="wrapper">
        <div className="services__list">
         {services.map(service => (
-          <div className="services__item">
+          <div className="services__item" key={service.id}>
             <h4>{service.title}</h4>
             <div className="services__content">
               <div className="services__list">

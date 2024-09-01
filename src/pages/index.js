@@ -46,6 +46,7 @@ export const query = graphql`
       _rawTeamText
       teamImages {
         asset {
+          assetId
           gatsbyImageData(fit: FILLMAX, placeholder: BLURRED)
         }
       }

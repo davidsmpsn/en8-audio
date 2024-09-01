@@ -5,7 +5,7 @@ export const Header = ({ handleOpen }) => {
     <header className="header">
       <h1>
         <a href="">
-          <img src="./logo.svg" />
+          <img src="./logo.svg" alt="Playhead Audio" />
           Playhead Audio
         </a>
       </h1>

@@ -8,10 +8,11 @@ export const About = ({ header, text, images }) => (
       <div className="about__inner">
         <div className="about__imgs">
           {images.map(image => (
-            <div className="about__img">
+            <div className="about__img" key={image.asset.assetId}>
               <GatsbyImage
                 image={image.asset.gatsbyImageData}
                 draggable="false"
+                alt="Playhead Audio"
               />
             </div>
           ))}
