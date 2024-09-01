@@ -172,11 +172,41 @@ body {
     flex-grow: 1;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+
+    .overlay__clipboard {
+      display: flex;
+      flex-direction: column;
+      border: 2px dashed rgb(52, 52, 52);
+      border-radius: 5px;
+    }
 
     h3 {
+      padding: .6rem 1.25rem;
       font-size: 3rem;
       font-weight: 600;
       text-align: center;
+    }
+
+    button {
+      margin-top: -1.25rem;
+      align-self: flex-end;
+      background: $highlight;
+      border: none;
+      color: $dark;
+      font-weight: 500;
+      font-size: .8rem;
+      border-radius: 5px 0 5px 0;
+      cursor: pointer;
+      transition: background-color ease .2s;
+
+      &:hover {
+        background: darken($highlight, 10%);
+      }
+
+      &:active {
+        background: darken($highlight, 20%);
+      }
     }
   }
 }
