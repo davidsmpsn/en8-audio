@@ -39,7 +39,8 @@ export const Projects = ({ projects, text }) => {
             left: 0,
             right: 0
           }}
-          dragTransition={{ bounceStiffness: 600, bounceDamping: 10 }}
+          dragTransition={{ bounceStiffness: 100, bounceDamping: 30 }}
+          dragElastic={1}
           style={{
             x: dragX,
             

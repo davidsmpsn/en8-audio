@@ -6,7 +6,8 @@ module.exports = {
     title: `Playhead Audio`,
     description: `London based, we are a team with over 30 years experience in the field. Working across location sound, audio post-production and commercially recorded music; trusted by some of the biggest recording artists and most established production companies alike.`,
     author: `Tom Archer, David Simpson`,
-    siteUrl: `https://www.playheadaudio.com`
+    siteUrl: `https://www.playheadaudio.com`,
+    keywords: `Audio Production Company, Location Recording Services London, Studio Recording London, Podcast Recording, Voiceover Recording, Audio Mixing Services, Post-Production Audio, On-Set Music Playback London, Audio Consultancy London, Music Video Production, Live Music Recording, Acoustic Session Recording, Audiobook Recording, Sound Engineering Services, Corporate Audio Solutions`
   },
   plugins: [
     "gatsby-plugin-sass",

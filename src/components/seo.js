@@ -11,6 +11,7 @@ const Seo = ({ lang, title, description, meta, children }) => {
             title
             description
             author
+            keywords
           }
         }
       }
@@ -23,7 +24,8 @@ const Seo = ({ lang, title, description, meta, children }) => {
     <>
       <title>{site.siteMetadata?.title}</title>
       <meta name="description" content={metaDescription} />
-      <meta property="og:title" content={title} />
+      <meta name="keywords" content={site.siteMetadata.keywords} />
+      <meta property="og:title" content={site.siteMetadata?.title} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="summary" />
