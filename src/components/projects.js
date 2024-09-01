@@ -24,12 +24,27 @@ export const Projects = ({ projects, text }) => {
   return (
     <div className="projects">
       <div className="wrapper">
-        <div className="projects__top">
+        {/* <div className="projects__top">
           <div className="projects__text">
             <PortableText value={text} />
           </div>
 
           
+        </div> */}
+
+        <div className="projects__nav">
+          <button onClick={() => imgIndex > 0 ? setImgIndex((pv) => pv - 1) : null}>
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF" aria-labelledby="left">
+              <title id="left">Left</title>
+              <path d="m287-446.67 240 240L480-160 160-480l320-320 47 46.67-240 240h513v66.66H287Z"/>
+            </svg>
+          </button>
+          <button onClick={() => imgIndex < projects.length - 1 ? setImgIndex((pv) => pv + 1 ) : null}>
+          <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF" aria-labelledby="right">
+            <title id="right">Right</title>
+            <path d="M673-446.67H160v-66.66h513l-240-240L480-800l320 320-320 320-47-46.67 240-240Z"/>
+          </svg>
+          </button>
         </div>
 
         <motion.div
@@ -67,21 +82,6 @@ export const Projects = ({ projects, text }) => {
             </div>
           ))}
         </motion.div>
-
-        <div className="projects__nav">
-            <button onClick={() => imgIndex > 0 ? setImgIndex((pv) => pv - 1) : null}>
-              <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF" aria-labelledby="left">
-                <title id="left">Left</title>
-                <path d="m287-446.67 240 240L480-160 160-480l320-320 47 46.67-240 240h513v66.66H287Z"/>
-              </svg>
-            </button>
-            <button onClick={() => imgIndex < projects.length - 1 ? setImgIndex((pv) => pv + 1 ) : null}>
-            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#FFFFFF" aria-labelledby="right">
-              <title id="right">Right</title>
-              <path d="M673-446.67H160v-66.66h513l-240-240L480-800l320 320-320 320-47-46.67 240-240Z"/>
-            </svg>
-            </button>
-          </div>
       </div>
     </div>
 )}

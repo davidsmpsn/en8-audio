@@ -74,30 +74,18 @@ body {
   @include md { justify-content: center }
 
   h1 {
-    display: block;
+    
     margin: 0;
     padding: 0;
     color: $secondary;
     font-size: 1.3rem;
     font-weight: 500;
     text-align: center;
-
-    a {
-      display: flex;
-      text-decoration: none;
-
-      img {
-        width: 27px;
-        margin-right: 1rem;
-      }
-
-      &:hover {
-        
-      }
-
-      &:active {
-        
-      }
+    display: flex;
+    
+    img {
+      width: 27px;
+      margin-right: 1rem;
     }
   }
 
@@ -255,9 +243,13 @@ body {
     }
 
     p {
-      max-width: 450px;
+      max-width: 500px;
       margin-bottom: 2rem;
       font-size: 1.25rem;
+    }
+
+    button {
+      margin-top: 2rem;
     }
   }
 }
@@ -315,6 +307,12 @@ body {
       grid-template-columns: repeat(12, 1fr);
       position: relative;
 
+      .about__img {
+        img {
+          border-radius: 5px;
+        }
+      }
+
       .about__img:nth-child(1) {
         grid-column: 1 / span 8;
         grid-row: 1;
@@ -355,7 +353,7 @@ body {
   overflow: hidden;
   
   .wrapper {
-    padding: 4rem 0;
+    padding: 4rem 0 6rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -524,12 +522,12 @@ body {
   }
   .services__list {
     .services__item {
-      padding: 4rem 0 5rem;
+      padding: 2rem 0 5rem;
       border-bottom: 1px solid $primary;
 
       .services__content {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 3fr;
         grid-template-rows: 1fr;
         grid-column-gap: 15rem;
   
@@ -540,12 +538,20 @@ body {
         }
 
         p {
-          font-size: 1.25rem;
+          font-size: 1rem;
           line-height: 180%;
         }
 
         .services__list {
           p { font-style: italic }
+        }
+
+        .services__text {
+          padding-right: 12rem;
+
+          p {
+            font-size: 1.25rem;
+          }
         }
       }
 
@@ -586,16 +592,17 @@ body {
 }
 
 .footer {
-  background: rgba(255, 255, 255, 1);
+  background: $bg-light;
   margin-bottom: 1.5rem;
-  padding: 6rem 0;
-  color: $dark;
+  padding: 2.5rem 0;
+  
+  text-align: center;
 
   @include lg { padding: 4rem 0 }
 
   a {
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: .5rem;
     font-size: 1.25rem;
     font-weight: 500;
     text-decoration: none;

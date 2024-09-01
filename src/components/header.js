@@ -4,10 +4,8 @@ export const Header = ({ handleOpen }) => {
   return (
     <header className="header">
       <h1>
-        <a href="">
-          <img src="./logo.svg" alt="Playhead Audio" />
-          Playhead Audio
-        </a>
+        <img src="./logo.svg" alt="Playhead Audio" />
+        Playhead Audio
       </h1>
       <div className="header__nav">
         <ul>

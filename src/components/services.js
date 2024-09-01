@@ -10,10 +10,18 @@ export const Services = ({ services }) => (
             <h4>{service.title}</h4>
             <div className="services__content">
               <div className="services__list">
-                <p>{service.services}</p>
+                {/* <p>{service.services}</p> */}
+                <p>Live Sessions</p>
+                <p>Acoustic Sessions</p>
+                <p>Acoustic Sessions</p>
+                <p>Acoustic Sessions</p>
+                <p>Acoustic Sessions</p>
+                <p>Acoustic Sessions</p>
+                <p>Acoustic Sessions</p>
+
               </div>
-              <div>
-              <PortableText value={service._rawDescription} />
+              <div className="services__text">
+                <PortableText value={service._rawDescription} />
               </div>
             </div>
           </div>
