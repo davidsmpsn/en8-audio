@@ -2,7 +2,7 @@ import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export const Contact = ({ isOpen, handleClose }) => {
-  
+
   const copy = (e) => {
     navigator.clipboard.writeText('enquiries@playheadaudio.com')
     e.target.innerText = 'Copied!'

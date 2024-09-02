@@ -138,18 +138,22 @@ body {
   bottom: 0;
   display: flex;
   flex-direction: column;
-  background: rgba(0, 0, 0, 1);
+  background: rgba(0, 0, 0, .9);
+  backdrop-filter: blur(6px);
+  
   z-index: 5;
 
   .overlay__close {
-    align-self: flex-end;
+    position: absolute;
+    top: 3rem;
+    right: 4rem;
     z-index: 1;
 
     button {
       background: none;
       border: none;
       color: $primary;
-      padding: 1rem;
+      padding: 1;
       font-size: 1.25rem;
       font-weight: 600;
       cursor: pointer;
