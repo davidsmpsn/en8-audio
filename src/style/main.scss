@@ -285,6 +285,7 @@ body {
       align-items: center;
       max-width: 150px;
       height: 150px;
+      cursor: pointer;
 
       @include md {
         max-width: 80px;
