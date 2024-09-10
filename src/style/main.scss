@@ -593,6 +593,8 @@ body {
         .services__text {
           padding-right: 12rem;
 
+          @include lg { padding: 0 }
+
           p {
             font-size: 1.25rem;
           }
