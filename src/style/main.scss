@@ -511,8 +511,6 @@ body {
   .projects__nav {
     display: flex;
     align-self: center;
-
-    @include md { align-self: flex-start }
     
     button {
       background: none;
