@@ -1,20 +1,20 @@
-import * as React from 'react'
-import { useState } from 'react'
-import { graphql } from 'gatsby'
-import Seo from '../components/seo'
-import { Header } from '../components/header'
-import { Hero } from '../components/hero'
-import { Mission } from '../components/mission'
-import { About } from '../components/about'
-import { Projects } from '../components/projects'
-import { Services } from '../components/services'
-import { Clients } from '../components/clients'
-import { Contact } from '../components/contact'
-import { Footer } from '../components/footer'
+import React, { useState, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { graphql } from 'gatsby';
+import Seo from '../components/seo';
+import { Header } from '../components/header';
+import { Hero } from '../components/hero';
+import { Mission } from '../components/mission';
+import { About } from '../components/about';
+import { Projects } from '../components/projects';
+import { Services } from '../components/services';
+import { Clients } from '../components/clients';
+import { Contact } from '../components/contact';
+import { Footer } from '../components/footer';
 
-import '../style/main.scss'
+import '../style/main.scss';
 
-import { clients } from '../data/clients'
+import { clients } from '../data/clients';
 
 export const query = graphql`
   query {
@@ -63,21 +63,35 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
 const IndexPage = ({ data }) => {
-  const [isOpen, setOpen] = useState(false)
+  const [isOpen, setOpen] = useState(false);
 
-  const handleClose = () => {
-    setOpen(false)
-  }
+  const handleOpen = (status) => {
+    setOpen(status);
+    if (status) {
+      scrollToTop(); // Scroll to top when opening contact
+    }
+  };
 
-  const handleOpen = () => {
-    setOpen(true)
-  }
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
-  const projects = data.allSanityProject.edges.map(project => project.node)
-  const services = data.allSanityService.edges.map(service => service.node)
+  const nextSectionRef = useRef(null);
+
+  const scrollToNextSection = () => {
+    nextSectionRef.current?.scrollIntoView({
+      behavior: 'smooth',
+    });
+  };
+
+  const projects = data.allSanityProject.edges.map(project => project.node);
+  const services = data.allSanityService.edges.map(service => service.node);
 
   return (
     <div>
@@ -85,26 +99,34 @@ const IndexPage = ({ data }) => {
         <video autoPlay={true} muted={true} loop={true} playsInline={true} id="myVideo">
           <source src={data.sanityHome.showreel.asset.url} type="video/webm"/>
         </video>
+        <Contact isOpen={isOpen} handleOpen={handleOpen} />
         <div className="wrapper">
-          <Header handleOpen={handleOpen} />
+          <Header handleOpen={handleOpen} isOpen={isOpen} />
           <Hero />
+          <div className="scroll-arrow">
+            <motion.a 
+              whileHover={{ scale: 1.2 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={scrollToNextSection}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#5f6368">
+                <path d="M446.67-800v513l-240-240L160-480l320 320 320-320-46.67-47-240 240v-513h-66.66Z"/>
+              </svg>
+            </motion.a>
+          </div>
         </div>
       </div>
 
-      <Mission handleOpen={handleOpen} header={data.sanityHome.missionHead} text={data.sanityHome._rawMissionText} />
+      <Mission ref={nextSectionRef} handleOpen={handleOpen} header={data.sanityHome.missionHead} text={data.sanityHome._rawMissionText} />
       <Clients clients={clients} />
-
       <Projects projects={projects} text={data.sanityHome._rawProjectsText} />
       <Services services={services} />
       <About header={data.sanityHome.teamHeader} text={data.sanityHome._rawTeamText} images={data.sanityHome.teamImages}/>
-      
-      <Contact isOpen={isOpen} handleClose={handleClose}/>
       <Footer />
-      
     </div>
-  )
-}
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 
-export const Head = () => <Seo title="Home" />
+export const Head = () => <Seo title="Home" />;

@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import { PortableText } from '@portabletext/react'
 
-export const Mission = ({ handleOpen, header, text }) => (
-  <div className="mission">
+export const Mission = forwardRef(({ handleOpen, header, text }, ref) => (
+  <div className="mission" ref={ref}>
     <div className="wrapper">
       <div className="mission__inner">
         <div className="mission__item">
@@ -15,4 +15,4 @@ export const Mission = ({ handleOpen, header, text }) => (
       </div>
     </div>
   </div>
-)
+))

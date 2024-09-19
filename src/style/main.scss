@@ -51,6 +51,7 @@ body {
   #myVideo {
     width: 100%;
     height: 100vh;
+    max-height: 100%;
     object-fit: cover;
     position: absolute;
     left: 0;
@@ -66,6 +67,8 @@ body {
 }
 
 .header {
+  position: relative;
+  z-index: 10;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -74,7 +77,6 @@ body {
   @include md { justify-content: center }
 
   h1 {
-    
     margin: 0;
     padding: 0;
     color: $secondary;
@@ -86,6 +88,8 @@ body {
     img {
       width: 27px;
       margin-right: 1rem;
+      
+      @include md { display: none }
     }
   }
 
@@ -131,14 +135,14 @@ body {
 }
 
 .overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   display: flex;
   flex-direction: column;
-  background: rgba(0, 0, 0, .9);
+  background: rgba(0, 0, 0, .8);
   backdrop-filter: blur(6px);
   
   z-index: 5;
@@ -227,6 +231,26 @@ body {
     align-items: center;
     justify-content: center;
     z-index: -1;
+}
+
+.scroll-arrow {
+  position: absolute;
+  bottom: 2rem; /* Position it 2rem from the bottom */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  cursor: pointer;
+
+  svg {
+    width: 40px;
+    height: 40px;
+    fill: $secondary; // Customize the color
+    transition: transform 0.3s ease;
+    
+    &:hover {
+      transform: translateY(5px); /* Moves the arrow slightly down */
+    }
+  }
 }
 
 .mission {
