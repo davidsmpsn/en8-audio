@@ -330,8 +330,8 @@ body {
     .clients__client {
       display: flex;
       align-items: center;
-      max-width: 150px;
-      height: 150px;
+      // max-width: 150px;
+      // height: 150px;
       cursor: pointer;
 
       @include md {

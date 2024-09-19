@@ -4,10 +4,10 @@ import useMeasure from 'react-use-measure'
 
 export const Clients = ({ clients }) => {
 
-  const FAST_DURATION = 60
-  const SLOW_DURATION = 100
+  const SCROLL_DURATION = 60
 
-  const [duration, setDuration] = useState(FAST_DURATION)
+  const [duration, setDuration] = useState(SCROLL_DURATION)
+  const [play, setPlay] = useState(true)
 
   let [ref, { width }] = useMeasure()
 
@@ -19,6 +19,14 @@ export const Clients = ({ clients }) => {
   useEffect(() => {
     let controls
     let finalPosition = -width / 2 - 20
+
+    if (!play) {
+      // Pause animation
+      if (controls) {
+        controls.stop() 
+      }
+      return // Exit the useEffect if play is false
+    }
 
     if (mustFinish) {
       controls = animate(xTranslation, [xTranslation.get(), finalPosition], {
@@ -41,7 +49,7 @@ export const Clients = ({ clients }) => {
 
 
     return controls?.stop
-  }, [xTranslation, width, duration, rerender])
+  }, [xTranslation, width, duration, rerender, play, mustFinish])
 
   return (
     <div className="clients">
@@ -51,20 +59,17 @@ export const Clients = ({ clients }) => {
         style={{ x: xTranslation }}
         onHoverStart={() => {
           setMustFinish(true)
-          setDuration(SLOW_DURATION)
+          setPlay(false)
         }}
         onHoverEnd={() => {
           setMustFinish(true)
-          setDuration(FAST_DURATION)
+          setPlay(true)
         }}
       >
       {[...clients, ...clients].map(client => (
-          <div className="clients__client">
-            <motion.img
-              src={`./client-logos/${client}.svg`} alt={client}
-              whileHover={{ scale: 1.1 }}
-            />
-          </div>
+          <motion.div className="clients__client" whileHover={{ scale: 1.1 }}>
+            <img src={`./client-logos/${client}.svg`} alt={client} />
+          </motion.div>
         ))}
       </motion.div>
     </div>
