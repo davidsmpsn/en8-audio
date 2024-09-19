@@ -10,7 +10,7 @@ export const Mission = forwardRef(({ handleOpen, header, text }, ref) => (
         </div>
         <div className="mission__item">
           <PortableText value={text} />
-          <button className="button" onClick={handleOpen}>Get in touch</button>
+          <button className="button" onClick={() => handleOpen(true)}>Get in touch</button>
         </div>
       </div>
     </div>

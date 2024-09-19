@@ -67,12 +67,17 @@ export const query = graphql`
 
 const IndexPage = ({ data }) => {
   const [isOpen, setOpen] = useState(false)
+  const [showArrow, setShowArrow] = useState(true)
 
   const handleOpen = (status) => {
     setOpen(status)
     if (status) {
       scrollToTop()
+      setShowArrow(false)
+    } else {
+      setShowArrow(true)
     }
+
   }
 
   const scrollToTop = () => {
@@ -94,13 +99,24 @@ const IndexPage = ({ data }) => {
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') {
         setOpen(false)
+        setShowArrow(true)
       }
     }
 
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowArrow(false);
+      } else {
+        setShowArrow(true);
+      }
+    };
+
     window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('scroll', handleScroll)
     
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 
@@ -117,7 +133,7 @@ const IndexPage = ({ data }) => {
         <div className="wrapper">
           <Header handleOpen={handleOpen} isOpen={isOpen} />
           <Hero />
-          <div className="scroll-arrow">
+          <div className={`${!showArrow || isOpen ? 'hide': ''} scroll-arrow`}>
             <motion.a 
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
