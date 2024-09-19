@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import { PortableText } from '@portabletext/react'
 
 const useMediaQuery = (width) => {
-  const [matches, setMatches] = useState(window.innerWidth <= width);
+  const [matches, setMatches] = useState(typeof window !== 'undefined' ? window.innerWidth <= width : false);
 
   useEffect(() => {
     const handleResize = () => {
