@@ -2,8 +2,27 @@ import React, { useState, useEffect, useCallback, memo } from 'react'
 import { motion } from 'framer-motion'
 import { PortableText } from '@portabletext/react'
 
-// Individual service component memoized to avoid unnecessary re-renders
+const useMediaQuery = (width) => {
+  const [matches, setMatches] = useState(window.innerWidth <= width);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setMatches(window.innerWidth <= width);
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [width]);
+
+  return matches;
+}
+
 const ServiceItem = memo(({ service, isSelected, handleClick }) => {
+  // Use the custom hook to detect mobile screen size
+  const isMobile = useMediaQuery(768); // Mobile breakpoint at 768px
+
   return (
     <div className={`services__item ${isSelected === service.id && 'open'}`}>
       {isSelected === service.id && (
@@ -14,19 +33,18 @@ const ServiceItem = memo(({ service, isSelected, handleClick }) => {
           transition={{ duration: 0.2 }}
           style={{ pointerEvents: "auto" }}
           onClick={() => handleClick('')} // Click overlay to close
-        >
-        </motion.div>
+        />
       )}
       <div className="services__inner">
         <motion.div
           className="services__content"
-          layout
+          layout={!isMobile}
           transition={{ layout: { type: 'spring', stiffness: 200, damping: 30 }}}
           onClick={() => handleClick(service.id)}
         >
-          <motion.img layout="position" className="services__icon" src={`${service.icon}.svg`} />
-          <motion.h4 layout="position">{service.title}</motion.h4>
-          <motion.p layout="position"><PortableText value={service._rawServices} /></motion.p>
+          <img className="services__icon" src={`${service.icon}.svg`} />
+          <motion.h4 layout={!isMobile ? 'position' : false}>{service.title}</motion.h4>
+          <motion.p layout={!isMobile ? 'position' : false}><PortableText value={service._rawServices} /></motion.p>
 
           {isSelected === service.id && (
             <motion.div
@@ -41,7 +59,9 @@ const ServiceItem = memo(({ service, isSelected, handleClick }) => {
 
           <motion.button
             className="services__button"
-            layout="position"
+            layout={!isMobile ? 'position' : false}
+            animate={{ rotate: isSelected === service.id ? 45 : 0 }}
+            transition={isMobile ? { duration: 0 } : { duration: 0.5, ease: 'easeInOut' }}
             onClick={() => handleClick(service.id)}
           >
             +
@@ -50,7 +70,8 @@ const ServiceItem = memo(({ service, isSelected, handleClick }) => {
       </div>
     </div>
   )
-})
+});
+
 
 export const Services = ({ services }) => {
   const [isSelected, setIsSelected] = useState('')
@@ -62,13 +83,13 @@ export const Services = ({ services }) => {
 
   useEffect(() => {
     if (isSelected) {
-      document.body.style.overflow = 'hidden'; // Disable scrolling when a service is open
+      document.body.style.overflow = 'hidden'
     } else {
-      document.body.style.overflow = ''; // Re-enable scrolling when no service is selected
+      document.body.style.overflow = ''
     }
 
     return () => {
-      document.body.style.overflow = ''; // Clean up on unmount
+      document.body.style.overflow = ''
     };
   }, [isSelected]);
 
