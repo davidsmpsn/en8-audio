@@ -135,8 +135,8 @@ const IndexPage = ({ data }) => {
       <Clients clients={clients} />
       <Projects projects={projects} text={data.sanityHome._rawProjectsText} />
       <Services services={services} />
-      <About header={data.sanityHome.teamHeader} text={data.sanityHome._rawTeamText} images={data.sanityHome.teamImages}/>
-      <Footer />
+      {/* <About header={data.sanityHome.teamHeader} text={data.sanityHome._rawTeamText} images={data.sanityHome.teamImages}/> */}
+      <Footer handleOpen={handleOpen} text={data.sanityHome._rawTeamText} />
     </div>
   )
 }
