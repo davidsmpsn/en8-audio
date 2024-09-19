@@ -1,20 +1,20 @@
-import React, { useState, useRef } from 'react';
-import { motion } from 'framer-motion';
-import { graphql } from 'gatsby';
-import Seo from '../components/seo';
-import { Header } from '../components/header';
-import { Hero } from '../components/hero';
-import { Mission } from '../components/mission';
-import { About } from '../components/about';
-import { Projects } from '../components/projects';
-import { Services } from '../components/services';
-import { Clients } from '../components/clients';
-import { Contact } from '../components/contact';
-import { Footer } from '../components/footer';
+import React, { useState, useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
+import { graphql } from 'gatsby'
+import Seo from '../components/seo'
+import { Header } from '../components/header'
+import { Hero } from '../components/hero'
+import { Mission } from '../components/mission'
+import { About } from '../components/about'
+import { Projects } from '../components/projects'
+import { Services } from '../components/services'
+import { Clients } from '../components/clients'
+import { Contact } from '../components/contact'
+import { Footer } from '../components/footer'
 
-import '../style/main.scss';
+import '../style/main.scss'
 
-import { clients } from '../data/clients';
+import { clients } from '../data/clients'
 
 export const query = graphql`
   query {
@@ -63,35 +63,49 @@ export const query = graphql`
       }
     }
   }
-`;
+`
 
 const IndexPage = ({ data }) => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, setOpen] = useState(false)
 
   const handleOpen = (status) => {
-    setOpen(status);
+    setOpen(status)
     if (status) {
-      scrollToTop(); // Scroll to top when opening contact
+      scrollToTop()
     }
-  };
+  }
 
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
-    });
-  };
+    })
+  }
 
-  const nextSectionRef = useRef(null);
+  const nextSectionRef = useRef(null)
 
   const scrollToNextSection = () => {
     nextSectionRef.current?.scrollIntoView({
       behavior: 'smooth',
-    });
-  };
+    })
+  }
 
-  const projects = data.allSanityProject.edges.map(project => project.node);
-  const services = data.allSanityService.edges.map(service => service.node);
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setOpen(false)
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [])
+
+  const projects = data.allSanityProject.edges.map(project => project.node)
+  const services = data.allSanityService.edges.map(service => service.node)
 
   return (
     <div>
@@ -124,9 +138,9 @@ const IndexPage = ({ data }) => {
       <About header={data.sanityHome.teamHeader} text={data.sanityHome._rawTeamText} images={data.sanityHome.teamImages}/>
       <Footer />
     </div>
-  );
-};
+  )
+}
 
-export default IndexPage;
+export default IndexPage
 
-export const Head = () => <Seo title="Home" />;
+export const Head = () => <Seo title="Home" />

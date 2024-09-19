@@ -118,6 +118,10 @@ body {
             color: $primary;
             background: rgba(255, 255, 255, .2) !important;
           }
+
+          &:focus {
+            outline: none; /* Remove the default outline */
+          }
         }
 
         &:last-child {
