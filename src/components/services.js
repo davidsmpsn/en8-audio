@@ -21,14 +21,14 @@ const useMediaQuery = (width) => {
 
 const ServiceItem = memo(({ service, isSelected, handleClick }) => {
   // Use the custom hook to detect mobile screen size
-  const isMobile = useMediaQuery(768); // Mobile breakpoint at 768px
+  const isMobile = useMediaQuery(768);
 
   return (
     <div className={`services__item ${isSelected === service.id && 'open'}`}>
       {isSelected === service.id && (
         <motion.div
           className="services__overlay"
-          initial={false}
+          initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.2 }}
           style={{ pointerEvents: "auto" }}
@@ -42,7 +42,7 @@ const ServiceItem = memo(({ service, isSelected, handleClick }) => {
           transition={{ layout: { type: 'spring', stiffness: 200, damping: 30 }}}
           onClick={() => handleClick(service.id)}
         >
-          <img className="services__icon" src={`${service.icon}.svg`} />
+          <img className="services__icon" src={`${service.icon}.svg`} alt={service.title} />
           <motion.h4 layout={!isMobile ? 'position' : false}>{service.title}</motion.h4>
           <motion.p layout={!isMobile ? 'position' : false}><PortableText value={service._rawServices} /></motion.p>
 
@@ -62,7 +62,6 @@ const ServiceItem = memo(({ service, isSelected, handleClick }) => {
             layout={!isMobile ? 'position' : false}
             animate={{ rotate: isSelected === service.id ? 45 : 0 }}
             transition={isMobile ? { duration: 0 } : { duration: 0.5, ease: 'easeInOut' }}
-            onClick={() => handleClick(service.id)}
           >
             +
           </motion.button>
@@ -72,24 +71,17 @@ const ServiceItem = memo(({ service, isSelected, handleClick }) => {
   )
 });
 
-
 export const Services = ({ services }) => {
-  const [isSelected, setIsSelected] = useState('')
+  const [isSelected, setIsSelected] = useState('');
 
-  // Memoize handleClick to prevent re-creation on every render
   const handleClick = useCallback((serviceId) => {
-    serviceId === isSelected ? setIsSelected('') : setIsSelected(serviceId)
-  }, [isSelected])
+    setIsSelected(prevId => prevId === serviceId ? '' : serviceId);
+  }, []);
 
   useEffect(() => {
-    if (isSelected) {
-      document.body.style.overflow = 'hidden'
-    } else {
-      document.body.style.overflow = ''
-    }
-
+    document.body.style.overflow = isSelected ? 'hidden' : '';
     return () => {
-      document.body.style.overflow = ''
+      document.body.style.overflow = '';
     };
   }, [isSelected]);
 
