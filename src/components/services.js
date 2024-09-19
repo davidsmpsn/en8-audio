@@ -7,13 +7,13 @@ const useMediaQuery = (width) => {
 
   useEffect(() => {
     const handleResize = () => {
-      setMatches(window.innerWidth <= width);
+      if (typeof window !== 'undefined') {
+        setMatches(window.innerWidth <= width);
+      }
     };
 
     window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
+    return () => window.removeEventListener('resize', handleResize);
   }, [width]);
 
   return matches;
