@@ -20,7 +20,6 @@ const useMediaQuery = (width) => {
 }
 
 const ServiceItem = memo(({ service, isSelected, handleClick }) => {
-  // Use the custom hook to detect mobile screen size
   const isMobile = useMediaQuery(768);
 
   return (
@@ -35,12 +34,11 @@ const ServiceItem = memo(({ service, isSelected, handleClick }) => {
           onClick={() => handleClick('')} // Click overlay to close
         />
       )}
-      <div className="services__inner">
+      <div className="services__inner" onClick={(isSelected) => isSelected && handleClick(service.id)}>
         <motion.div
           className="services__content"
           layout={!isMobile}
           transition={{ layout: { type: 'spring', stiffness: 200, damping: 30 }}}
-          onClick={() => handleClick(service.id)}
         >
           <img className="services__icon" src={`${service.icon}.svg`} alt={service.title} />
           <motion.h4 layout={!isMobile ? 'position' : false}>{service.title}</motion.h4>
@@ -76,6 +74,21 @@ export const Services = ({ services }) => {
 
   const handleClick = useCallback((serviceId) => {
     setIsSelected(prevId => prevId === serviceId ? '' : serviceId);
+  }, []);
+
+  // Add Escape key listener
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'Escape') {
+        setIsSelected(''); // Close the lightbox when Escape is pressed
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
   }, []);
 
   useEffect(() => {

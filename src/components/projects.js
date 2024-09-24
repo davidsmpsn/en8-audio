@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { motion, useMotionValue, useAnimation } from 'framer-motion'
 import useMeasure from 'react-use-measure'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
 export const Projects = ({ projects, text }) => {
-  const [imgIndex, setImgIndex] = useState(0)
+  const extendedProjects = [...projects, ...projects, ...projects]
+  const [imgIndex, setImgIndex] = useState(extendedProjects.length / 3)
 
   const x = useMotionValue(0)
   const controls = useAnimation()
@@ -71,7 +72,7 @@ export const Projects = ({ projects, text }) => {
           animate={controls}
           onDragEnd={onDragEnd}
         >
-          {projects.map(project => (
+          {extendedProjects.map(project => (
             <div className="projects__project" ref={ref} key={project.id}>
               <a href={project.link} target="_blank" rel="noreferrer" draggable="false">
                 <GatsbyImage
