@@ -575,7 +575,7 @@ body {
     @include sm { gap: 1.5rem }
 
     .services__item {
-      min-height: 350px;
+      min-height: 310px;
 
       @include sm { min-height: 300px }
 
@@ -611,6 +611,7 @@ body {
           }
 
           h4 {
+            display: flex;
             font-size: 1.625rem;
             font-weight: 500;
             margin-bottom: 1rem;
@@ -633,7 +634,7 @@ body {
           .services__icon {
             width: 40px;
             height: 40px;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
 
             @include sm { margin-bottom: 1rem }
           }

@@ -41,8 +41,12 @@ const ServiceItem = memo(({ service, isSelected, handleClick }) => {
           transition={{ layout: { type: 'spring', stiffness: 200, damping: 30 }}}
         >
           <img className="services__icon" src={`${service.icon}.svg`} alt={service.title} />
-          <motion.h4 layout={!isMobile ? 'position' : false}>{service.title}</motion.h4>
-          <motion.p layout={!isMobile ? 'position' : false}><PortableText value={service._rawServices} /></motion.p>
+          <div className="services__main">
+            <motion.h4 layout={!isMobile ? 'position' : false}>
+              {service.title}
+            </motion.h4>
+            <motion.p layout={!isMobile ? 'position' : false}><PortableText value={service._rawServices} /></motion.p>
+          </div>
 
           {isSelected === service.id && (
             <motion.div
