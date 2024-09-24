@@ -3,7 +3,7 @@
  */
 module.exports = {
   siteMetadata: {
-    title: `Playhead Audio`,
+    title: `Playhead Audio | Trusted audio solutions for  media and music`,
     description: `London based, we are a team with over 30 years experience in the field. Working across location sound, audio post-production and commercially recorded music; trusted by some of the biggest recording artists and most established production companies alike.`,
     author: `Tom Archer, David Simpson`,
     siteUrl: `https://www.playheadaudio.com`,
