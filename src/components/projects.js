@@ -5,11 +5,29 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 
 export const Projects = ({ projects, text }) => {
   const [imgIndex, setImgIndex] = useState(0)
+  const [isHovered, setIsHovered] = useState(false) // To track if the carousel is hovered
 
   const x = useMotionValue(0)
   const controls = useAnimation()
 
   let [ref, { width: projectWidth }] = useMeasure()
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (isHovered) {  // Only respond to arrow keys when hovered
+        if (e.key === 'ArrowLeft') {
+          handleNavClick(-1)
+        } else if (e.key === 'ArrowRight') {
+          handleNavClick(1)
+        }
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [imgIndex, isHovered])  // Re-run when the image index or hover state changes
 
   const onDragEnd = (event, info) => {
     const velocity = info.velocity.x
@@ -43,8 +61,6 @@ export const Projects = ({ projects, text }) => {
 
     const targetX = -(newIndex * projectWidth - newIndex * -32)
 
-    console.log(targetX)
-
     controls.start({
       x: targetX,
       transition: {
@@ -57,11 +73,13 @@ export const Projects = ({ projects, text }) => {
     setImgIndex(newIndex)
   }
 
-
-
   return (
     <div className="projects">
-      <div className="wrapper">
+      <div 
+        className="wrapper"
+        onMouseEnter={() => setIsHovered(true)}  // Start listening for keys on hover
+        onMouseLeave={() => setIsHovered(false)} // Stop listening for keys when not hovered
+      >
         <motion.div
           className="projects__inner"
           drag="x"
@@ -105,4 +123,5 @@ export const Projects = ({ projects, text }) => {
         </div>
       </div>
     </div>
-)}
+  )
+}

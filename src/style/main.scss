@@ -134,9 +134,7 @@ body {
             background: rgba(255, 255, 255, .2) !important;
           }
 
-          &:focus {
-            outline: none; /* Remove the default outline */
-          }
+          &:focus { outline: none }
         }
 
         &:last-child {
@@ -552,9 +550,8 @@ body {
         transition: fill ease .2s;
       }
       
-      &:hover svg {
-        fill: rgba(255, 255, 255, 1);
-      }
+      &:hover svg { fill: rgba(255, 255, 255, 1) }
+      &:focus { outline: none }
     }
   }
 }
