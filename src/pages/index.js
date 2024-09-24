@@ -128,6 +128,7 @@ const IndexPage = ({ data }) => {
       <div className="page_top">
         <video autoPlay={true} muted={true} loop={true} playsInline={true} id="myVideo">
           <source src={data.sanityHome.showreel.asset.url} type="video/webm"/>
+          <source src="./showreel.mp4" type="video/mp4"/>
         </video>
         <Contact isOpen={isOpen} handleOpen={handleOpen} />
         <div className="wrapper">

@@ -28,6 +28,7 @@ const Seo = ({ lang, title, description, meta, children }) => {
       <meta property="og:title" content={site.siteMetadata?.title} />
       <meta property="og:description" content={metaDescription} />
       <meta property="og:type" content="website" />
+      <meta property="og:image" content="http://playheadaudio.com/playhead-audio.png" />
       <meta name="twitter:card" content="summary" />
       <meta
         name="twitter:creator"
