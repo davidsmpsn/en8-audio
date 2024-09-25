@@ -13,7 +13,7 @@ export const Projects = ({ projects, text }) => {
   const x = useMotionValue(0)
   const controls = useAnimation()
 
-  let [ref, { width: projectWidth }] = useMeasure()
+  let [measureRef, { width: projectWidth }] = useMeasure()
 
   useLayoutEffect(() => {
     const initialX = -(imgIndex * projectWidth + imgIndex * 32)
@@ -122,7 +122,7 @@ export const Projects = ({ projects, text }) => {
           onDragEnd={onDragEnd}
         >
           {extendedProjects.map((project, index) => (
-            <div className="projects__project" ref={ref} key={`${project.id}-${index}`}>
+            <div className="projects__project" ref={measureRef} key={`${project.id}-${index}`}>
               <a href={project.link} target="_blank" rel="noreferrer" draggable="false">
                 <GatsbyImage
                   image={project.image.asset.gatsbyImageData}

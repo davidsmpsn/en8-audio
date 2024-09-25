@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, memo } from 'react'
+import React, { useState, useEffect, useCallback, memo, forwardRef } from 'react'
 import { motion } from 'framer-motion'
 import { PortableText } from '@portabletext/react'
 
@@ -73,7 +73,7 @@ const ServiceItem = memo(({ service, isSelected, handleClick }) => {
   )
 });
 
-export const Services = ({ services }) => {
+export const Services = forwardRef(({ services }, ref) => {
   const [isSelected, setIsSelected] = useState('');
 
   const handleClick = useCallback((serviceId) => {
@@ -103,7 +103,7 @@ export const Services = ({ services }) => {
   }, [isSelected]);
 
   return (
-    <div className="services">
+    <div className="services" ref={ref}>
       <div className="wrapper">
         <div className="services__list">
           {services.map(service => (
@@ -118,4 +118,4 @@ export const Services = ({ services }) => {
       </div>
     </div>
   )
-}
+})

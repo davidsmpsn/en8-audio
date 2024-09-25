@@ -69,30 +69,33 @@ const IndexPage = ({ data }) => {
   const [isOpen, setOpen] = useState(false)
   const [showArrow, setShowArrow] = useState(true)
 
+  // Refs for Projects, Services, and Mission sections
+  const projectsRef = useRef(null)
+  const servicesRef = useRef(null)
+  const missionRef = useRef(null)
+
   const handleOpen = (status) => {
     setOpen(status)
     if (status) {
-      scrollToTop()
+      scrollTo(null)
       setShowArrow(false)
     } else {
       setShowArrow(true)
     }
-
   }
 
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
-  }
-
-  const nextSectionRef = useRef(null)
-
-  const scrollToNextSection = () => {
-    nextSectionRef.current?.scrollIntoView({
-      behavior: 'smooth',
-    })
+  const scrollTo = (ref) => {
+    if (ref) {
+      ref.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    } else {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
   }
 
   useEffect(() => {
@@ -130,6 +133,14 @@ const IndexPage = ({ data }) => {
           <source src={data.sanityHome.showreel.asset.url} type="video/webm"/>
           <source src="./showreel.mp4" type="video/mp4"/>
         </video>
+        <div className="sidenav">
+          <div className="sidenav__item">
+            <button onClick={() => scrollTo(projectsRef)}>Projects</button>
+          </div>
+          <div className="sidenav__item">
+            <button onClick={() => scrollTo(servicesRef)}>Services</button>
+          </div>
+        </div>
         <Contact isOpen={isOpen} handleOpen={handleOpen} />
         <div className="wrapper">
           <Header handleOpen={handleOpen} isOpen={isOpen} />
@@ -138,7 +149,7 @@ const IndexPage = ({ data }) => {
             <motion.a 
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.9 }}
-              onClick={scrollToNextSection}
+              onClick={() => scrollTo(missionRef)} // Example of scrolling to mission
             >
               <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#5f6368">
                 <path d="M446.67-800v513l-240-240L160-480l320 320 320-320-46.67-47-240 240v-513h-66.66Z"/>
@@ -148,10 +159,10 @@ const IndexPage = ({ data }) => {
         </div>
       </div>
 
-      <Mission ref={nextSectionRef} handleOpen={handleOpen} header={data.sanityHome.missionHead} text={data.sanityHome._rawMissionText} />
-      <Clients clients={clients} />
+      <Mission ref={missionRef} handleOpen={handleOpen} header={data.sanityHome.missionHead} text={data.sanityHome._rawMissionText} />
+      <Clients ref={projectsRef} clients={clients} />
       <Projects projects={projects} text={data.sanityHome._rawProjectsText} />
-      <Services services={services} />
+      <Services ref={servicesRef} services={services} />
       {/* <About header={data.sanityHome.teamHeader} text={data.sanityHome._rawTeamText} images={data.sanityHome.teamImages}/> */}
       <Footer handleOpen={handleOpen} text={data.sanityHome._rawTeamText} />
     </div>

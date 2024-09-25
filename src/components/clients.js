@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, forwardRef } from 'react'
 import { motion, animate, useMotionValue } from 'framer-motion'
 import useMeasure from 'react-use-measure'
 
-export const Clients = ({ clients }) => {
+export const Clients = forwardRef(({ clients }, ref) => {
 
   const FAST_DURATION = 60
   const SLOW_DURATION = 120
 
   const [duration, setDuration] = useState(FAST_DURATION)
 
-  let [ref, { width }] = useMeasure()
+  let [measureRef, { width }] = useMeasure()
 
   const xTranslation = useMotionValue(0)
 
@@ -44,10 +44,10 @@ export const Clients = ({ clients }) => {
   }, [xTranslation, width, duration, rerender, mustFinish])
 
   return (
-    <div className="clients">
+    <div className="clients" ref={ref}>
       <motion.div
         className="clients__list"
-        ref={ref}
+        ref={measureRef}
         style={{ x: xTranslation }}
         onHoverStart={() => {
           setMustFinish(true)
@@ -69,4 +69,4 @@ export const Clients = ({ clients }) => {
       </motion.div>
     </div>
   )
-}
+})
