@@ -41,7 +41,7 @@ export const Clients = ({ clients }) => {
 
 
     return controls?.stop
-  }, [xTranslation, width, duration, rerender])
+  }, [xTranslation, width, duration, rerender, mustFinish])
 
   return (
     <div className="clients">
@@ -58,8 +58,8 @@ export const Clients = ({ clients }) => {
           setDuration(FAST_DURATION)
         }}
       >
-      {[...clients, ...clients].map(client => (
-          <div className="clients__client">
+      {[...clients, ...clients].map((client, index) => (
+          <div className="clients__client" key={`${index}`}>
             <motion.img
               src={`./client-logos/${client}.svg`} alt={client}
               whileHover={{ scale: 1.1 }}
