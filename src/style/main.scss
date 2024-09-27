@@ -63,16 +63,14 @@ body {
   width: 100%;
   min-height: 100vh;
 
-  #myVideo {
-    width: 100%;
-    height: 100vh;
-    max-height: 100%;
+  #myVideo {  
     object-fit: cover;
+    min-width: 100%;
+    min-height: 100%;
     position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: -2;
   }
 

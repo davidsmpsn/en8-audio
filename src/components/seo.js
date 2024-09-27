@@ -22,6 +22,7 @@ const Seo = ({ lang, title, description, meta, children }) => {
 
   return (
     <>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>{site.siteMetadata?.title}</title>
       <meta name="description" content={metaDescription} />
       <meta name="keywords" content={site.siteMetadata.keywords} />
