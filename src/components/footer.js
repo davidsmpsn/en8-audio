@@ -13,10 +13,10 @@ export const Footer = ({ handleOpen, text }) => (
       <div className="footer__section">
         <p>&copy; Playhead Audio 2024</p>
         <p><a href="mailto:enquiries@playheadaudio.com">enquiries@playheadaudio.com</a></p>
-        <div className="footer__socials">
+        {/* <div className="footer__socials">
           <a href="https://www.instagram.com/playheadaudio/" className="icon-instagram">Instagram</a>
           <a href="https://www.linkedin.com/company/playheadaudio/" className="icon-linkedin">LinkedIn</a>
-        </div>
+        </div> */}
       </div>
     </div>
   </footer>
