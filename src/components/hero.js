@@ -32,7 +32,7 @@ export const Hero = () => {
         animate="visible"
         variants={group}
       >
-        <img src="./logo.svg" alt="Playhead Audio" />
+        <img src="./new_logo.png" alt="Playhead Audio" />
       </motion.div>
   )
 }
